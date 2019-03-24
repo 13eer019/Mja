@@ -111,7 +111,7 @@
   },
   {
     "userId":"1495339",
-    "password":"26032018",
+    "password":"gkrish",
     "name":"GOKULKRISHNAN DEVARAJ"
   },
   {
@@ -253,5 +253,10 @@
     "userId":"gbkadmin",
     "password":"kochiadmin",
     "name":"Shubham Gokul"
+  },
+  {
+    "userId":"guest",
+    "password":"guest",
+    "name":"Guest"
   }
 ]
