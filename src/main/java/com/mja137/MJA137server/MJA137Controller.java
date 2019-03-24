@@ -1,5 +1,6 @@
 package com.mja137.MJA137server;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
@@ -84,6 +85,12 @@ public class MJA137Controller {
 				UserEntity result = userdao.findById(id).get();
 				result.setComment(comment);
 				userdao.save(result);
+				Iterable<UserEntity> response = userdao.findAll();
+				ObjectMapper mapper = new ObjectMapper();
+				String path = System.getProperty("user.dir");
+				FileOutputStream fos = new FileOutputStream("/src/main/resources/json/details.json");
+				byte[] byteRes = mapper.writeValueAsString(response).getBytes();
+				fos.write(byteRes);
 				return result;
 			}
 		}
