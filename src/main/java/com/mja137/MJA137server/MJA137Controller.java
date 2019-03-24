@@ -88,7 +88,7 @@ public class MJA137Controller {
 				Iterable<UserEntity> response = userdao.findAll();
 				ObjectMapper mapper = new ObjectMapper();
 				String path = System.getProperty("user.dir");
-				FileOutputStream fos = new FileOutputStream("/src/main/resources/json/details.json");
+				FileOutputStream fos = new FileOutputStream(path+"/src/main/resources/json/details.json");
 				byte[] byteRes = mapper.writeValueAsString(response).getBytes();
 				fos.write(byteRes);
 				return result;
