@@ -57,7 +57,7 @@ public class MJA137Controller {
 
 	@RequestMapping(value="/homePage", method = RequestMethod.POST)
 	@ResponseBody
-	private Iterator<UserEntity> getAllDetails(HttpSession session, HttpServletRequest request) throws IOException {
+	private List<UserEntity> getAllDetails(HttpSession session, HttpServletRequest request) throws IOException {
 		String attribute = (String) session.getAttribute("name");
 		String id = (String) session.getAttribute("id");
 		request.getSession().setAttribute("name", attribute);
@@ -66,7 +66,10 @@ public class MJA137Controller {
 			request.getSession().setAttribute("name", attribute);
 			request.getSession().setAttribute("id", id);
 			Iterator<UserEntity> result = userdao.findAll().iterator();
-			return result;
+			List<UserEntity> resultList = new ArrayList<>();
+			result.forEachRemaining(resultList::add);
+			Collections.sort(resultList);
+			return resultList;
 		}
 		return null;
 	}

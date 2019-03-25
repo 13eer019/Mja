@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class UserEntity {
+public class UserEntity implements Comparable<UserEntity>{
 
 	@Id
 	private String id;
@@ -74,6 +74,9 @@ public class UserEntity {
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
-	
-	
+
+	@Override
+	public int compareTo(UserEntity user) {
+		return name.compareTo(user.name);
+	}
 }
